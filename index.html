@@ -17,14 +17,13 @@ body{
   font-size:17px; line-height:1.6;
 }
 .wrap{max-width:34rem;margin:0 auto;padding:2.5rem 1.25rem 4rem}
-.meta{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 h1{font-size:1.75rem;line-height:1.25;font-weight:600;margin:0 0 .5rem;letter-spacing:-.01em}
 h2{font-size:1.2rem;font-weight:600;margin:0 0 .75rem;letter-spacing:-.005em}
 p{margin:0 0 1rem}
 .lede{color:var(--muted);font-size:1rem;margin-bottom:1.5rem}
 hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
 .count{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.8rem;color:var(--muted);letter-spacing:.02em}
-.track{height:2px;background:var(--rule);margin:.6rem 0 1.75rem;position:relative}
+.track{height:2px;background:var(--rule);margin:.6rem 0 1.75rem}
 .fill{height:2px;background:var(--ink);width:0;transition:width .25s ease}
 .q{font-size:1.3rem;line-height:1.35;font-weight:600;margin:0 0 1.25rem;letter-spacing:-.005em}
 button.opt{
@@ -35,6 +34,8 @@ button.opt:hover{border-color:var(--ink)}
 button.opt:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .opt .lbl{font-weight:600;display:block;line-height:1.35}
 .opt .sub{display:block;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;color:var(--muted);line-height:1.5;margin-top:.3rem}
+button.none{background:none;border-style:dashed;margin-top:.9rem}
+button.none .lbl{font-weight:400;color:var(--muted);font-size:.95rem}
 .note{background:var(--panel);padding:.85rem 1rem;margin-top:1.25rem;border-radius:2px}
 .note .tag{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.75rem;color:var(--muted);letter-spacing:.04em;display:block;margin-bottom:.3rem}
 .note p{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.9rem;line-height:1.55;margin:0}
@@ -46,198 +47,194 @@ button.plain{
 }
 button.plain:hover{border-color:var(--ink);color:var(--ink)}
 button.plain:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-.bars{margin:1.5rem 0 2rem}
-.bar{margin-bottom:1rem}
-.bar .row{display:flex;justify-content:space-between;align-items:baseline;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.9rem;margin-bottom:.35rem}
-.bar .name{font-weight:600}
-.bar .val{color:var(--muted)}
-.bar .gauge{height:8px;background:var(--rule);border-radius:1px;overflow:hidden}
-.bar .gauge span{display:block;height:8px}
-.verdict{font-size:1.35rem;font-weight:600;line-height:1.3;margin:0 0 1rem;letter-spacing:-.005em}
-.dom{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
-table{width:100%;border-collapse:collapse;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;margin:1rem 0 1.5rem}
-td,th{text-align:left;padding:.4rem .5rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
-th{color:var(--muted);font-weight:400}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.verdict{font-size:2.1rem;font-weight:600;line-height:1.12;margin:2.25rem 0 1rem;letter-spacing:-.022em}
+.stack{display:flex;height:14px;overflow:hidden;margin:0 0 .75rem}
+.stack span{display:block;height:14px}
+.legend{display:flex;flex-wrap:wrap;gap:.3rem 1.5rem;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;margin-bottom:1.75rem}
+.legend div{display:flex;align-items:center;gap:.45rem}
+.legend i{width:9px;height:9px;flex:none;display:inline-block}
+.legend b{font-weight:600}
+.legend em{font-style:normal;color:var(--muted)}
+.skip{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;color:var(--muted);margin-bottom:2rem}
+.dcard{border-top:2px solid var(--ink);padding-top:.65rem;margin-bottom:1.75rem}
+.dcard h3{font-size:1.15rem;font-weight:600;margin:0 0 .45rem;letter-spacing:-.005em}
+.dcard p{margin:0}
+.kicker{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.78rem;color:var(--muted);margin:0 0 .15rem;letter-spacing:.03em}
+.drow{padding:1rem 0;border-bottom:1px solid var(--rule)}
+.drow:first-of-type{border-top:1px solid var(--rule)}
+.drow .top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.drow .dname{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;color:var(--muted);line-height:1.4}
+.drow .dlead{font-weight:600;font-size:1.05rem;white-space:nowrap}
+.drow .dbar{display:flex;height:5px;overflow:hidden;margin-top:.6rem}
+.drow .dbar span{display:block;height:5px}
+.foot{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.83rem;color:var(--muted);line-height:1.6;margin-top:2rem}
+.foot summary{cursor:pointer;padding:.3rem 0}
+.foot p{font-size:.83rem;margin:.6rem 0 0}
 @media (prefers-reduced-motion:reduce){.fill{transition:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div id="app"><p class="lede">Loading the assessment…</p></div>
-</div>
+<div class="wrap"><div id="app"><p class="lede">Loading…</p></div></div>
 <script>
 var Q=[
-["Your natural body build",[["Lean and narrow","v","Bones read easily even at a normal weight. Thin wrists and ankles."],["Broad and solid","k","Looks substantial even when lean. Wide wrists, thick joints."],["Moderate and even","p","Reads neither narrow nor broad at any weight."]],"Measure your wrist at its narrowest point. Under 17cm is narrow, 17 to 19 moderate, above 19 broad. Adjust down a little if you are short, up if you are tall. The wrist carries almost no muscle or fat, so it reads skeleton directly.","Classical Ayurvedic texts describe no body build for Pitta at all. The middle option is a modern addition and it pulls results falsely toward Pitta. Only take it if neither of the others fits."],
-["Weight over your adult life",[["Gains easily, comes off slowly","k","Weight arrives without much provocation and leaves reluctantly."],["Hard to put on, drops quickly","v","Bulking is a struggle. A bad fortnight and it is gone."],["Fairly stable","p","Moves predictably in proportion to what you do."]],"Two weeks of eating badly with no exercise. What does the scale actually do?","Frame and weight behaviour are separate things. A narrow frame that gains readily is common. Answer this independently of question 1."],
-["Your skin, untreated",[["Warm, flushes, prone to rashes","p","Reddens easily. Breakouts, heat rash, sensitivity to sun."],["Dry, thin, roughens in cold or wind","v","Needs moisturiser to stay comfortable. Cracks at knuckles and heels."],["Thick, smooth, tends oily","k","Holds moisture on its own. Oily by mid-afternoon."]],"How your skin behaves with nothing applied to it, in ordinary weather.",null],
-["Your hair",[["Thick, heavy, wavy, holds shine","k","Plenty of it. Heavy enough to be inconvenient."],["Dry, frizzy, splits or thins","v","Needs product to behave. Brittle ends."],["Fine, early greying or receding","p","Fine texture, and grey or thinning arrived early."]],"Your hair at around 25, before any current changes set in.",null],
-["Your appetite",[["Irregular, varies day to day","v","Ravenous one day, uninterested the next. No reliable pattern."],["Sharp and urgent","p","Real hunger with an edge. You get irritable if a meal is late."],["Steady and mild","k","Predictable and moderate. Skipping a meal is not a crisis."]],"Lunch is three hours late. Are you unbothered, mildly aware of it, or genuinely unpleasant to be around?",null],
-["After a normal meal",[["Slow and heavy, sits a long time","k","Sluggish afterwards. You would rather not move."],["Gas or bloating is common","v","Distension, wind, unpredictable from meal to meal."],["Fast, with acidity or heartburn","p","Digests quickly. Burning or reflux is familiar."]],"Ninety minutes after a full meal, how does your midsection actually feel?",null],
-["Your bowel pattern",[["Loose or frequent","p","More than once a day, often soft."],["Irregular or dry","v","Constipation is familiar. Timing varies."],["Regular but slow and heavy","k","Reliable, unhurried, formed."]],"Your baseline without fibre supplements, coffee, or deliberate management.",null],
-["Thirst through the day",[["Low, you often forget to drink","k","Water intake needs a reminder or a rule."],["Variable","v","Some days constant, some days barely at all."],["High, you drink frequently","p","Genuinely thirsty, regularly, on your own initiative."]],"With no water bottle in sight and nobody prompting you, do you notice thirst?",null],
-["How you sweat",[["Heavily, with a strong odour","p","Soaks through. Noticeable smell."],["Little, even in heat","v","Stays fairly dry in conditions where others do not."],["Moderate and steady","k","Sweats, but unremarkably."]],"The same workout as someone of similar size. Who leaves the bigger mark on the bench?",null],
-["The weather you handle worst",[["Heat and direct sun","p","Wilts, gets irritable, seeks shade and cold drinks."],["Cold, dry wind","v","Stiffens up, skin cracks, cannot get warm."],["Damp, cold and grey","k","Heavy, congested, sluggish and unmotivated."]],"Which climate makes you physically feel worst within an hour. Not which one you dislike on principle.",null],
-["Your sleep",[["Deep and long, hard to wake","k","Eight hours or more if allowed, and groggy on waking."],["Light, interrupted","v","Wakes easily. Mind switches on at 3am."],["Sound but short","p","Six or seven hours and you are properly awake."]],"With no alarm, no late night and nothing on your mind, what does your body do on its own?",null],
-["Your energy across a day",[["Bursts, then a crash","v","Productive in spikes. Flat between them."],["Slow to start, then steady","k","Mornings are hard. Once going, you last."],["Strong and driven","p","High output, sustained by push rather than by ease."]],"Plot a normal day. Spikes and troughs, one long slow ramp, or a strong level line?","Caffeine and a fixed work routine both distort this heavily. Answer from a free day with no schedule."],
-["How you talk",[["Slow and measured, few words","k","Comfortable with silence. Speaks when there is something to say."],["Fast, plenty of it, tangents","v","Talks quickly, jumps between threads, circles back."],["Precise and direct","p","Economical and pointed. Argues a position well."]],"What would someone say about you after one conversation?",null],
-["How you move and walk",[["Quick, restless, hard to sit still","v","Fidgets without noticing. Gets up mid-task. Stop-start."],["Unhurried and deliberate","k","Moves with weight. Comfortable staying put for long stretches."],["Brisk and purposeful","p","One consistent fast speed. Overtakes people without meaning to."]],"A friend spots you fifty metres ahead in a crowd. What do they recognise you by?","Years of desk-bound work train stillness into anyone. Answer from what you are like away from a desk, and from your twenties."],
-["Learning and memory",[["Sharp and accurate, retains detail","p","Remembers figures, exact wording, who said what."],["Slow to take in, keeps it for years","k","Needs a second pass. Then it is permanent."],["Learns fast, forgets fast","v","Grasps it immediately. Cannot find it later."]],"Something you learned five years ago and have not touched since. Gone entirely, intact, or partial? Forgetting is more diagnostic than uptake.","If your job trains detail retention, work memory is not a clean read. Test yourself on something outside work: a language, directions, a film's plot."],
-["Making decisions",[["Deliberate and slow, hard to shift after","k","Takes time to commit. Then it is settled."],["Quick and firm","p","Decides fast and acts on it."],["Changes your mind often","v","Revisits, reopens, reconsiders."]],"From the moment you know the right option to the moment you act, how long?",null],
-["Your instinct with money",[["Spends on quality or the best version","p","Buying the best available feels correct, not indulgent."],["Saves and accumulates","k","Parting with money needs a reason, even when affordable."],["Spends impulsively","v","Goes quickly, without much pattern or afterthought."]],"Unplanned money arrives. Where does it go by default? And when you do buy the expensive right thing, does it feel like a justified exception or the obvious choice? Exception means saver.",null],
-["Under real pressure you become",[["Irritable, critical, short-tempered","p","Fuse shortens. Focus holds or sharpens. Heat goes outward at people."],["Anxious, scattered, worried","v","Mind runs ahead to what might go wrong. Motion without traction."],["Withdrawn, shut down","k","Goes quiet, avoids, seeks comfort or sleep."]],"The first twenty minutes after bad news lands, before you have managed yourself into a response.","Professional composure is trained. Answer from what your family gets at the end of a bad week, not what colleagues see in the meeting."],
-["Your emotional pattern",[["Slow to get upset, slow to let go","k","Takes a lot to provoke. Holds it a long while after."],["Shifts quickly, up and down","v","Changes fast in both directions."],["Intense while it lasts, then over","p","Burns hot, then genuinely done with it."]],"From upset to genuinely over it: hours, days, or weeks?",null],
-["Your joints",[["Well-padded and stable","k","Cushioned. Bones are not prominent at knee or knuckle."],["Loose, warm, moderate","p","Flexible and unremarkable."],["Prominent, they crack and pop","v","Knees, knuckles and ankles are visible and audible."]],"Knees, knuckles, ankles. Padded and quiet, or prominent and noisy?",null]
+["Your natural body build",[["Lean and narrow","v","Bones read easily even at a normal weight. Thin wrists and ankles."],["Broad and solid","k","Substantial even when lean. Wide wrists, thick joints."],["Moderate and even","p","Neither narrow nor broad at any weight."]],"Genuinely cannot tell, my weight has always masked my frame","Measure your wrist at its narrowest point. Under 17cm is narrow, 17 to 19 moderate, above 19 broad, adjusted for your height. The wrist carries almost no muscle or fat, so it reads skeleton directly.","Classical texts describe no body build for Pitta. The middle option is a modern addition that pulls results falsely toward Pitta. Take it only if neither of the others fits.","s"],
+["Weight across your adult life",[["Gains easily, comes off slowly","k","Arrives without provocation, leaves reluctantly."],["Hard to put on, drops quickly","v","Bulking is a struggle. A bad fortnight and it is gone."],["Stable, moves in proportion to effort","p","Predictable in both directions."]],"My weight has never varied enough for me to know","Two weeks of eating badly with no exercise. What does the scale actually do?","Frame and weight behaviour are separate. A narrow frame that gains readily is common. Answer independently of question 1.","s"],
+["Your skin's natural tendency",[["Warm and reddish, quick to flush","p","Runs hot to the touch. Colour rises easily."],["Dry and thin","v","Loses moisture fast. Fine-textured, cool to the touch."],["Oily and thick","k","Holds moisture on its own. Substantial, smooth."]],"Balanced, neither dry nor oily, does not flush","Untreated skin, nothing applied, in ordinary weather. Judge by moisture and temperature, not by breakouts.",null,"s"],
+["Your hair",[["Thick, heavy, holds shine","k","Plenty of it. Heavy enough to be inconvenient."],["Dry and fine, frizzes or splits","v","Needs product to behave. Brittle ends."],["Fine, with early greying or thinning","p","Fine texture, and grey or recession arrived early."]],"Ordinary, nothing distinctive either way","Your hair at around 25, before any current changes set in.","Greying and male-pattern recession are strongly genetic and only loosely constitutional. Weight this one lightly if it is the only Pitta marker you have.","s"],
+["Your eyes",[["Large, moist, steady and calm","k","Thick lashes. An unhurried gaze."],["Small and active, on the dry side","v","Move quickly. Blink often."],["Sharp and penetrating, sensitive to bright light","p","Direct gaze. Sunglasses go on early."]],"Nothing about them stands out","How they behave rather than how they look. Movement, moisture, and how you cope with glare.",null,"s"],
+["Your teeth and nails",[["Large, even, strong; thick nails","k","Solid and well-set. Nails resist splitting."],["Irregular or crowded; nails split easily","v","Uneven set. Brittle, ridged nails."],["Moderate, slightly yellow-toned; soft nails","p","Average set. Nails bend rather than break."]],"Unremarkable on both counts","Answer from before any orthodontic work, and from your nails without treatment or supplements.",null,"s"],
+["Your joints",[["Well-padded and stable","k","Cushioned. Bones not prominent at knee or knuckle."],["Loose, warm, flexible","p","Move freely. Unremarkable to look at."],["Prominent, they crack and pop","v","Knees, knuckles and ankles are visible and audible."]],"Nothing notable about them","Knees, knuckles and ankles at rest. Padded and quiet, or prominent and noisy?",null,"s"],
+["Your appetite",[["Irregular, varies day to day","v","Ravenous one day, uninterested the next."],["Sharp and strong, comes on urgently","p","Real hunger with an edge to it. Hard to postpone."],["Mild and steady, easy to postpone","k","Moderate and predictable. Skipping is no crisis."]],"Reliable and moderate, neither sharp nor sluggish","Lunch is three hours late. Unbothered, mildly aware, or genuinely unpleasant to be around?","The framework treats reliable moderate appetite as balance rather than as any dosha, so the fourth option here is a real answer, not a dodge.","m"],
+["Your digestive power",[["Fast and strong, food clears quickly","p","Efficient. You are hungry again on schedule."],["Variable, unpredictable meal to meal","v","The same food does different things on different days."],["Slow and heavy, sits a long time","k","Sluggish afterwards. You would rather not move."]],"Steady and comfortable, no pattern stands out","Judge by speed and consistency after a plain, simple meal, not by complaints. Fast clean digestion is a genuine constitutional marker in its own right.","Burning, bloating and reflux are signs of imbalance rather than constitution, and they shift with diet, stress and sleep. Digesting quickly with no discomfort still counts as fast digestion.","m"],
+["Your bowel pattern",[["Soft and fast, more than once a day","p","Quick transit. Loose more often than not."],["Dry or irregular, timing varies","v","Constipation is familiar. No reliable schedule."],["Formed but slow and heavy","k","Reliable, unhurried, takes effort."]],"Effortless and regular, neither slow nor rushed","Your baseline without fibre supplements, coffee, or deliberate management.",null,"m"],
+["Thirst through the day",[["Low, you forget to drink","k","Water intake needs a reminder or a rule."],["Variable","v","Some days constant, some days barely at all."],["High, you drink frequently","p","Genuinely thirsty, regularly, unprompted."]],"Moderate and consistent","With no bottle in sight and nobody prompting you, do you notice thirst?",null,"m"],
+["How you sweat",[["Readily and heavily, with strong odour","p","Starts early, soaks through."],["Little, even in heat","v","Stays dry where others do not."],["Slow to start, then persistent","k","Takes real exertion, then keeps going."]],"Average, nothing notable","The same workout as someone of similar size. Who starts sweating first, and who ends up wetter?",null,"m"],
+["The climate you handle worst",[["Heat and direct sun","p","Wilts, gets irritable, seeks shade."],["Cold, dry wind","v","Stiffens, skin cracks, cannot get warm."],["Damp, cold and grey","k","Heavy, congested, unmotivated."]],"I handle all three about equally","Which one makes you physically feel worst within an hour. Not which you dislike on principle.",null,"m"],
+["Your sleep, left to itself",[["Deep and long, hard to wake","k","Eight hours or more if allowed. Groggy on waking."],["Light and interrupted","v","Wakes easily. Mind switches on at 3am."],["Sound but short","p","Six or seven hours and you are properly awake."]],"Normal length, wake easily, nothing notable","No alarm, no late night, nothing on your mind. What does your body do on its own?",null,"m"],
+["Your energy across a day",[["Bursts, then a crash","v","Productive in spikes. Flat between them."],["Slow to start, then steady","k","Mornings are hard. Once going, you last."],["Strong and driven throughout","p","High output, sustained by push."]],"Even throughout, no real pattern","Plot a free day with no schedule. Spikes and troughs, a slow ramp, or a level line?","Caffeine and a fixed work routine distort this heavily.","b"],
+["How you talk",[["Slow and measured, few words","k","Comfortable with silence."],["Fast, plenty of it, tangents","v","Jumps between threads, circles back."],["Precise and direct","p","Economical and pointed. Argues a position well."]],"Middling, nobody would remark on it","What would someone say about you after one conversation?",null,"b"],
+["How you move and walk",[["Quick and restless, hard to sit still","v","Fidgets unconsciously. Stop-start."],["Unhurried and deliberate","k","Moves with weight. Content to stay put."],["Brisk and purposeful","p","One fast consistent speed."]],"Nothing distinctive about it","A friend spots you fifty metres ahead in a crowd. What do they recognise you by?","Years of desk-bound work train stillness into anyone. Answer from away from a desk, and from your twenties.","b"],
+["Learning and memory",[["Sharp and accurate, retains detail","p","Figures, exact wording, who said what."],["Slow to take in, keeps it for years","k","Needs a second pass. Then permanent."],["Fast in, fast out","v","Grasps it immediately. Cannot find it later."]],"Average, takes normal effort and fades normally","Something learned five years ago and untouched since. Gone, intact, or partial? Forgetting is more diagnostic than uptake.","If your job trains detail retention, work memory is not a clean read. Test on something outside work.","b"],
+["Making decisions",[["Deliberate and slow, settled once made","k","Takes time to commit. Then it holds."],["Quick and firm","p","Decides fast and acts."],["Revisits and changes your mind","v","Reopens, reconsiders."]],"Depends on the stakes, no consistent pattern","From the moment you know the right option to the moment you act, how long?",null,"b"],
+["Under real pressure you become",[["Irritable, critical, short-tempered","p","Fuse shortens. Focus holds. Heat goes outward."],["Anxious, scattered, worried","v","Mind runs ahead. Motion without traction."],["Withdrawn, you shut down","k","Goes quiet, avoids, seeks comfort."]],"None of these, I stay fairly level","The first twenty minutes after bad news lands, before you manage yourself into a response.","Professional composure is trained. Answer from what your family gets after a bad week, not what colleagues see.","b"],
+["Your emotional pattern",[["Slow to upset, slow to let go","k","Takes a lot to provoke. Holds it after."],["Shifts quickly, both directions","v","Changes fast."],["Intense while it lasts, then over","p","Burns hot, then genuinely done."]],"Even-tempered, nothing pronounced","From upset to genuinely over it: hours, days, or weeks?",null,"b"]
 ];
-
 var NAME={v:"Vata",p:"Pitta",k:"Kapha"};
 var COLOR={v:"var(--vata)",p:"var(--pitta)",k:"var(--kapha)"};
 var GLOSS={
- v:"Vata governs movement: breath, circulation, nerve impulse, and the passage of thought. Its qualities are dry, light, cold, mobile and irregular. Where it leads, you get quickness, variability and a light frame, with dryness and irregularity as the cost.",
- p:"Pitta governs transformation: digestion, metabolism, body heat, and the processing of information. Its qualities are hot, sharp, light and penetrating. Where it leads, you get intensity, precision and drive, with heat and irritability as the cost.",
- k:"Kapha governs structure: tissue, fluid, lubrication and cohesion. Its qualities are heavy, slow, cool, oily and stable. Where it leads, you get endurance, steadiness and solidity, with sluggishness and accumulation as the cost."
+ v:"Vata governs movement: breath, circulation, nerve impulse, the passage of thought. Dry, light, cold, mobile, irregular. Quickness and variability are its gifts; dryness and irregularity are its cost.",
+ p:"Pitta governs transformation: digestion, metabolism, body heat, the processing of information. Hot, sharp, light, penetrating. Intensity and precision are its gifts; heat and irritability are its cost.",
+ k:"Kapha governs structure: tissue, fluid, lubrication, cohesion. Heavy, slow, cool, oily, stable. Endurance and steadiness are its gifts; sluggishness and accumulation are its cost."
 };
-var DOMAIN={1:"structure",2:"structure",3:"structure",4:"structure",5:"metabolic",6:"metabolic",7:"metabolic",8:"metabolic",9:"metabolic",10:"metabolic",11:"mind",12:"metabolic",13:"mind",14:"mind",15:"mind",16:"mind",17:"mind",18:"mind",19:"mind",20:"structure"};
-
-var ans=new Array(Q.length).fill(null), i=0;
+var DOMNAME={s:"Structure: build, skin, hair, eyes, teeth, joints",m:"Metabolic: appetite, digestion, thirst, sleep, heat",b:"Mind and behaviour: speech, memory, decisions, stress"};
+var ans=new Array(Q.length).fill(undefined), i=0;
 var app=document.getElementById("app");
-
-function el(tag,css,txt){var e=document.createElement(tag);if(css)e.style.cssText=css;if(txt)e.textContent=txt;return e;}
-
+function el(t,c,x){var e=document.createElement(t);if(c)e.style.cssText=c;if(x)e.textContent=x;return e;}
 function intro(){
   app.innerHTML="";
-  var h=el("h1",null,"Prakriti assessment");
-  var l=el("p",null,"Twenty questions on your Ayurvedic constitution. Each one carries an explanation of what it is really asking, the single test that best separates the three answers, and a warning where everyday life distorts the reading.");
-  l.className="lede";
-  var l2=el("p",null,"Answer for your lifelong pattern, not the last few months. Constitution is meant to be your stable baseline; what is true of you right now is a different idea and mixing the two is the most common way these go wrong. Takes about eight minutes. Nothing is sent anywhere.");
-  l2.className="lede";
-  var b=el("button",null,"Start");
-  b.className="plain";
-  b.style.cssText="padding:.65rem 1.4rem;font-size:1rem;color:var(--ink);border-color:var(--ink)";
-  b.onclick=function(){i=0;render();};
-  app.appendChild(h);app.appendChild(l);app.appendChild(l2);app.appendChild(b);
+  app.appendChild(el("h1",null,"Prakriti assessment"));
+  var a=el("p",null,"Twenty-one questions on your Ayurvedic constitution. Each carries an explanation of what it is actually measuring, the test that best separates the answers, and a warning where ordinary life distorts the reading.");a.className="lede";
+  var b=el("p",null,"Every question has a fourth option for when none of the three genuinely fits. Taking it is not a failure. Those answers are excluded from the scoring rather than guessed at, and how often you use it is reported back to you as a measure of how well the instrument fitted.");b.className="lede";
+  var c=el("p",null,"Answer for your lifelong pattern, not the last few months. Constitution is meant to be your stable baseline. About eight minutes. Nothing is sent anywhere.");c.className="lede";
+  var s=el("button",null,"Start");s.className="plain";s.style.cssText="padding:.65rem 1.4rem;font-size:1rem;color:var(--ink);border-color:var(--ink)";
+  s.onclick=function(){i=0;render();};
+  app.appendChild(a);app.appendChild(b);app.appendChild(c);app.appendChild(s);
 }
-
 function render(){
   app.innerHTML="";
   if(i>=Q.length){results();return;}
   var d=Q[i];
   var c=el("div",null,"Question "+(i+1)+" of "+Q.length);c.className="count";
   var t=el("div");t.className="track";
-  var f=el("div");f.className="fill";f.style.width=Math.round(i/Q.length*100)+"%";
-  t.appendChild(f);
+  var f=el("div");f.className="fill";f.style.width=Math.round(i/Q.length*100)+"%";t.appendChild(f);
   app.appendChild(c);app.appendChild(t);
-  var q=el("p",null,d[0]);q.className="q";
-  app.appendChild(q);
-  d[1].forEach(function(o){
-    var b=document.createElement("button");
-    b.className="opt";
-    var s1=el("span",null,o[0]);s1.className="lbl";
-    var s2=el("span",null,o[2]);s2.className="sub";
-    b.appendChild(s1);b.appendChild(s2);
-    b.onclick=function(){ans[i]=o[1];i++;render();window.scrollTo(0,0);};
-    app.appendChild(b);
-  });
+  var q=el("p",null,d[0]);q.className="q";app.appendChild(q);
+  function mk(label,sub,val,isNone){
+    var b=document.createElement("button");b.className="opt"+(isNone?" none":"");
+    var s1=el("span",null,label);s1.className="lbl";b.appendChild(s1);
+    if(sub){var s2=el("span",null,sub);s2.className="sub";b.appendChild(s2);}
+    b.onclick=function(){ans[i]=val;i++;render();window.scrollTo(0,0);};
+    return b;
+  }
+  d[1].forEach(function(o){app.appendChild(mk(o[0],o[2],o[1],false));});
+  app.appendChild(mk(d[2],null,null,true));
   var n=el("div");n.className="note";
-  var tag=el("span",null,"The test");tag.className="tag";
-  n.appendChild(tag);n.appendChild(el("p",null,d[2]));
+  var tg=el("span",null,"The test");tg.className="tag";n.appendChild(tg);n.appendChild(el("p",null,d[3]));
   app.appendChild(n);
-  if(d[3]){
-    var w=el("div");w.className="note warn";
-    var wt=el("span",null,"Watch out");wt.className="tag";
-    w.appendChild(wt);w.appendChild(el("p",null,d[3]));
-    app.appendChild(w);
-  }
+  if(d[4]){var w=el("div");w.className="note warn";var wt=el("span",null,"Watch out");wt.className="tag";w.appendChild(wt);w.appendChild(el("p",null,d[4]));app.appendChild(w);}
   var nav=el("div");nav.className="nav";
-  if(i>0){
-    var back=el("button",null,"Back");back.className="plain";
-    back.onclick=function(){i--;render();window.scrollTo(0,0);};
-    nav.appendChild(back);
-  }
+  if(i>0){var bk=el("button",null,"Back");bk.className="plain";bk.onclick=function(){i--;render();window.scrollTo(0,0);};nav.appendChild(bk);}
   app.appendChild(nav);
 }
-
 function results(){
-  var c={v:0,p:0,k:0};
-  ans.forEach(function(a){c[a]++;});
-  var pct=function(n){return Math.round(n/Q.length*100);};
+  var c={v:0,p:0,k:0}, skipped=0;
+  ans.forEach(function(a){if(a===null){skipped++;}else{c[a]++;}});
+  var N=Q.length-skipped;
+  var pct=function(n){return N?Math.round(n/N*100):0;};
   var order=["v","p","k"].sort(function(a,b){return c[b]-c[a];});
-  var top=order[0], second=order[1];
-  var topPct=pct(c[top]), secPct=pct(c[second]);
-
+  var top=order[0],second=order[1],topPct=pct(c[top]),secPct=pct(c[second]);
   app.innerHTML="";
-  app.appendChild(el("h1",null,"Your result"));
-
-  var bars=el("div");bars.className="bars";
-  order.forEach(function(d){
-    var b=el("div");b.className="bar";
-    var row=el("div");row.className="row";
-    var nm=el("span",null,NAME[d]);nm.className="name";
-    var vl=el("span",null,pct(c[d])+"%  ·  "+c[d]+" of "+Q.length);vl.className="val";
-    row.appendChild(nm);row.appendChild(vl);
-    var g=el("div");g.className="gauge";
-    var s=el("span");s.style.cssText="width:"+pct(c[d])+"%;background:"+COLOR[d];
-    g.appendChild(s);
-    b.appendChild(row);b.appendChild(g);
-    bars.appendChild(b);
-  });
-  app.appendChild(bars);
-
-  var verdict, explain;
-  if(topPct>=50){
+  var verdict,explain;
+  if(N===0){verdict="No result";explain="Nothing was scored.";}
+  else if(topPct>=50){
     verdict=NAME[top]+" dominant";
-    explain="One dosha cleared the fifty percent mark, which is the conventional threshold for calling it dominant. "+(secPct>=25?NAME[second]+" sits in the secondary band, so the full reading is "+NAME[top]+"-"+NAME[second]+".":"Nothing else reached the secondary band, so this is a relatively single-type result, which is uncommon.");
+    explain="One dosha cleared fifty percent of your scored answers, the conventional threshold for dominance. "+(secPct>=25?NAME[second]+" sits in the secondary band, so the full reading is "+NAME[top]+"-"+NAME[second]+".":"Nothing else reached the secondary band, making this a relatively single-type result, which is uncommon.");
   } else if(topPct-secPct<=10){
-    verdict=NAME[top]+"-"+NAME[second]+", closely split";
-    explain="No dosha cleared fifty percent, so strictly speaking you have no dominant type. The top two are within two questions of each other, which means a single different answer would reorder them. Treat the ranking as provisional and the pairing as the real finding. Most people are dual-dosha.";
+    verdict=NAME[top]+" and "+NAME[second]+", closely split";
+    explain="No dosha cleared fifty percent, and the top two are close enough that a single different answer would reorder them. Treat the ranking as provisional and the pairing as the finding. Most people are dual-dosha.";
   } else {
     verdict=NAME[top]+" leading, "+NAME[second]+" secondary";
-    explain="No dosha cleared fifty percent, so this is a dual-type result rather than a dominant one. "+NAME[top]+" leads clearly enough to be meaningful, with "+NAME[second]+" behind it. Most people land here.";
+    explain="No dosha cleared fifty percent, so this is a dual-type result rather than a dominant one. "+NAME[top]+" leads clearly enough to mean something, with "+NAME[second]+" behind it.";
   }
-  var v=el("p",null,verdict);v.className="verdict";
-  app.appendChild(v);
+  if(N<Math.ceil(Q.length*0.6)){
+    var lo=el("div");lo.className="note warn";lo.style.marginTop="1.5rem";
+    var lt=el("span",null,"Low confidence");lt.className="tag";lo.appendChild(lt);
+    lo.appendChild(el("p",null,"You marked "+skipped+" of "+Q.length+" questions as not fitting, leaving only "+N+" scored. That is too few to read as a constitutional type. It may mean a genuinely balanced constitution, or simply that this instrument does not fit you. Treat what follows as indicative at best."));
+    app.appendChild(lo);
+  }
+  var v=el("p",null,verdict);v.className="verdict";app.appendChild(v);
+  var st=el("div");st.className="stack";
+  order.forEach(function(d){if(c[d]>0){var s=el("span");s.style.cssText="width:"+pct(c[d])+"%;background:"+COLOR[d];st.appendChild(s);}});
+  if(N>0)app.appendChild(st);
+  var lg=el("div");lg.className="legend";
+  order.forEach(function(d){
+    var it=el("div");
+    var sw=document.createElement("i");sw.style.background=COLOR[d];
+    it.appendChild(sw);it.appendChild(el("b",null,NAME[d]));it.appendChild(el("em",null,pct(c[d])+"%"));
+    lg.appendChild(it);
+  });
+  if(N>0)app.appendChild(lg);
   app.appendChild(el("p",null,explain));
-  app.appendChild(el("p",null,GLOSS[top]));
-  if(secPct>=25) app.appendChild(el("p",null,GLOSS[second]));
-
-  var dom={structure:{v:0,p:0,k:0},metabolic:{v:0,p:0,k:0},mind:{v:0,p:0,k:0}};
-  ans.forEach(function(a,n){dom[DOMAIN[n+1]][a]++;});
-  var lead=function(o){var ks=Object.keys(o).sort(function(a,b){return o[b]-o[a];});return o[ks[0]]===o[ks[1]]?"mixed":NAME[ks[0]];};
-
+  var sk=el("p",null,skipped===0?"All "+Q.length+" questions gave a clear signal, so the whole instrument sits behind this.":skipped+" question"+(skipped===1?" was":"s were")+" marked as not fitting and left out of the scoring. Percentages are of the "+N+" scored, not of "+Q.length+".");
+  sk.className="skip";app.appendChild(sk);
+  if(N>0){
+    var card=function(d,role){
+      var k=el("div");k.className="dcard";k.style.borderTopColor=COLOR[d];
+      var kick=el("p",null,role);kick.className="kicker";k.appendChild(kick);
+      k.appendChild(el("h3",null,NAME[d]));
+      k.appendChild(el("p",null,GLOSS[d]));
+      return k;
+    };
+    app.appendChild(card(top,"Leading"));
+    if(secPct>=25)app.appendChild(card(second,"Secondary"));
+  }
+  var dom={s:{v:0,p:0,k:0,n:0},m:{v:0,p:0,k:0,n:0},b:{v:0,p:0,k:0,n:0}};
+  ans.forEach(function(a,n){var g=dom[Q[n][5]];if(a===null){g.n++;}else{g[a]++;}});
+  var lead=function(o){var ks=["v","p","k"].sort(function(a,b){return o[b]-o[a];});if(o[ks[0]]===0)return "no signal";return o[ks[0]]===o[ks[1]]?"mixed":NAME[ks[0]];};
   app.appendChild(document.createElement("hr"));
   app.appendChild(el("h2",null,"Where your answers clustered"));
-  app.appendChild(el("p",null,"This matters more than the totals. Answers that group cleanly by domain mean something; answers that scatter evenly mean the questionnaire is not discriminating well for you."));
-  var tbl=document.createElement("table");
-  tbl.innerHTML="<tr><th>Domain</th><th>Leaning</th><th>Split</th></tr>";
-  [["Structure: frame, skin, hair, joints","structure"],["Metabolic: appetite, digestion, sleep, heat","metabolic"],["Mind: speech, memory, decisions, stress","mind"]].forEach(function(r){
-    var o=dom[r[1]];
-    var tr=document.createElement("tr");
-    tr.innerHTML="<td>"+r[0]+"</td><td>"+lead(o)+"</td><td>V"+o.v+" P"+o.p+" K"+o.k+"</td>";
-    tbl.appendChild(tr);
+  app.appendChild(el("p",null,"This matters more than the totals. Seven questions sit in each domain, so they carry equal weight by construction. Answers that group cleanly within a domain mean something; answers that scatter evenly mean the instrument is not discriminating well for you."));
+  ["s","m","b"].forEach(function(k){
+    var o=dom[k],scored=o.v+o.p+o.k;
+    var row=el("div");row.className="drow";
+    var t=el("div");t.className="top";
+    var nm=el("span",null,DOMNAME[k]);nm.className="dname";
+    var ld=el("span",null,lead(o));ld.className="dlead";
+    t.appendChild(nm);t.appendChild(ld);row.appendChild(t);
+    var db=el("div");db.className="dbar";
+    if(scored){["v","p","k"].forEach(function(d){if(o[d]>0){var s=el("span");s.style.cssText="width:"+Math.round(o[d]/scored*100)+"%;background:"+COLOR[d];db.appendChild(s);}});}
+    else{var s0=el("span");s0.style.cssText="width:100%;background:var(--rule)";db.appendChild(s0);}
+    row.appendChild(db);
+    app.appendChild(row);
   });
-  app.appendChild(tbl);
-  app.appendChild(el("p",null,"Structural markers carry the most weight in classical assessment, because frame, skin and joints do not change with your job or your last six months. Metabolic answers are the least reliable: appetite, digestion and energy shift with work, stress, sleep and diet. If your structural and metabolic columns disagree, trust the structural one for constitution, and read the metabolic column as current state rather than baseline."));
-
-  app.appendChild(document.createElement("hr"));
-  app.appendChild(el("h2",null,"How much to trust this"));
-  app.appendChild(el("p",null,"Less than the confident presentation of any online dosha quiz suggests. Reviews of prakriti assessment tools find that most lack proper psychometric validation, that machine-learning approaches struggle with accuracy and replicability, and that even device-based methods have not been adequately validated. The better instruments do show decent test-retest reliability, but reliability only means the tool agrees with itself, not that the result predicts anything about your health."));
-  app.appendChild(el("p",null,"Useful as a vocabulary for patterns you already recognise in yourself. Not a basis for medical decisions, and not a substitute for a qualified practitioner, who would assess by examination and questioning rather than a form. If a recommendation that follows from your result would mean changing medication, ignoring a symptom, or eliminating a food group, check with a doctor first."));
-
+  var dn=el("p",null,"Structural markers carry the most weight in classical assessment, because build, skin, eyes, teeth and joints do not change with your job or your last six months. Metabolic answers are the least reliable, shifting with work, stress, sleep and diet. If your structural and metabolic rows disagree, trust the structural one for constitution and read the metabolic row as your current state instead.");
+  dn.style.marginTop="1.5rem";app.appendChild(dn);
   app.appendChild(document.createElement("hr"));
   var again=el("button",null,"Take it again");again.className="plain";
-  again.onclick=function(){ans=new Array(Q.length).fill(null);i=0;render();window.scrollTo(0,0);};
+  again.onclick=function(){ans=new Array(Q.length).fill(undefined);i=0;render();window.scrollTo(0,0);};
   app.appendChild(again);
-  var copy=el("button",null,"Copy my answers");copy.className="plain";
-  copy.style.marginLeft=".5rem";
+  var copy=el("button",null,"Copy my answers");copy.className="plain";copy.style.marginLeft=".5rem";
   copy.onclick=function(){
-    var txt="Prakriti result — Vata "+c.v+"/"+Q.length+" ("+pct(c.v)+"%), Pitta "+c.p+"/"+Q.length+" ("+pct(c.p)+"%), Kapha "+c.k+"/"+Q.length+" ("+pct(c.k)+"%). By question: "+ans.map(function(a,n){return (n+1)+":"+NAME[a];}).join(", ");
+    var txt="Prakriti result — scored "+N+" of "+Q.length+" ("+skipped+" skipped). Vata "+c.v+" ("+pct(c.v)+"%), Pitta "+c.p+" ("+pct(c.p)+"%), Kapha "+c.k+" ("+pct(c.k)+"%). By question: "+ans.map(function(a,n){return (n+1)+":"+(a===null?"skip":NAME[a]);}).join(", ");
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){copy.textContent="Copied";},function(){window.prompt("Copy this:",txt);});}
     else{window.prompt("Copy this:",txt);}
   };
   app.appendChild(copy);
+  var ft=el("p",null,"This names a pattern, it does not diagnose anything. If something following from it would mean changing medication, ignoring a symptom, or cutting out a food group, ask a doctor first.");
+  ft.className="foot";
+  app.appendChild(ft);
   window.scrollTo(0,0);
 }
-
 intro();
 </script>
 </body>
